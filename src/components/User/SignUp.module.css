@@ -1,0 +1,10 @@
+.he{
+    color: white;
+    background-color: #292d36;
+    height: calc(100vh - 30vh);
+}
+
+.he form{
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+}

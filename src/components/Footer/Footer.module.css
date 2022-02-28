@@ -1,0 +1,8 @@
+.pos{
+    height: 15vh;
+    background-color: #131722;
+}
+.pos div{
+    height: inherit;
+   
+}
