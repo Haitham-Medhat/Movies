@@ -2,7 +2,7 @@
 Movies 
 
 ## Demo link:
-Access my site at  
+Access my site at https://65cc1e289874264c977a2c76--moviessnews.netlify.app/login  
 
 ## Table of Content:
 
