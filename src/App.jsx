@@ -7,16 +7,15 @@ import Error from "./pages/Error";
 import User from "./pages/user/User";
 import ProtectedRoute from "./components/util/ProtectedRoute";
 import PublicRoute from "./components/util/PublicRouter";
-import MoviesPage from "./pages/user/MoviesPage";
-import { useSelector } from "react-redux";
+import MoviesPage from "./pages/user/MoviesPage"; 
 import Tvpage from "./pages/user/Tvpage";
 import HomePage from "./pages/user/HomePage";
 
 
 
 
-export default function App() {
-  const isAuth = useSelector((state) => state.isAuth);
+export default function App() { 
+
   const router = createBrowserRouter([
     {
       path: '/',
