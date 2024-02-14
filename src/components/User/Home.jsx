@@ -1,11 +1,12 @@
 import React from "react";
-import { useMoviesApi } from "../Movies-HookApi";
+import { useMoviesApi } from "../util/Movies-HookApi";
 import ColDisplay from "../UI/ColDisplay";
 import DisplayContent from "../UI/DisplayContent";
-export default function Home() {
-  let imgPrefix = "https://image.tmdb.org/t/p/w500";
-  let { tv, movies, person } = useMoviesApi();
-  
+import LoadingSpinner from "../UI/LoadingSpinner";
+import Error from "../../pages/Error";
+import { imgPrefix } from "../../api/http";
+export default function Home({tv , movies , person}) {
+
   return (
     <div className="container">
       <div className="row py-5">
@@ -13,9 +14,9 @@ export default function Home() {
           header1={`Trending Movies To Watch  `}
           paragraph={"trending Movies To watch"}
         />
-        {movies.map((movie, index) => (
+        {movies.map((movie) => (
           <DisplayContent
-            key={index}
+            key={movie.title}
             imgPrefix={imgPrefix}
             title={movie.title}
             poster_path={movie.poster_path}
@@ -27,9 +28,9 @@ export default function Home() {
           header1={` Trending Series To Watch  `}
           paragraph={"trending Series To watch"}
         />
-        {tv.map((tv, index) => (
+        {tv.map((tv) => (
           <DisplayContent
-            key={index}
+            key={tv.title}
             imgPrefix={imgPrefix}
             title={tv.title}
             poster_path={tv.poster_path}
@@ -38,9 +39,9 @@ export default function Home() {
       </div>
       <div className="row py-5">
         <ColDisplay header1={`  Most popular Actresses  `} />
-        {person.map((person, index) => (
+        {person.map((person) => (
           <DisplayContent
-            key={index}
+            key={person.name}
             imgPrefix={imgPrefix}
             title={person.name}
             poster_path={person.profile_path}

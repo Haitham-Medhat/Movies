@@ -1,29 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+ 
 import { NavLink } from "react-router-dom";
-import { Div, DivHover ,UL} from "../style_Overlay/Style";
+import { Div, DivHover, UL } from "../style_Overlay/Style";
+import { imgPrefix } from "../../api/http"; 
 
-export default function Movies() {
-  let [movies, setMovies] = useState([]);
-  let imgPrefix = "https://image.tmdb.org/t/p/w500";
-  async function get(term, callback) {
-    let responce;
-    if (term === "trending/movie/day") {
-      responce = await axios.get(
-        `https://api.themoviedb.org/3/${term}?api_key=3c3176b172e1333dea35fb82ae9f5cf6`
-      );
-    } else {
-      responce = await axios.get(
-        `https://api.themoviedb.org/3/movie/${term}?api_key=3c3176b172e1333dea35fb82ae9f5cf6`
-      );
-    }
-    callback(responce.data.results);
-    console.log(movies);
-  }
-  useEffect(() => get("now_playing", setMovies), []);
-  function getCategory(category) {
-    get(category, setMovies);
-  }
+export default function Movies({data , getCategory}) {
+
   return (
     <div className="container">
       <nav className="text-center align-items-center">
@@ -63,7 +44,7 @@ export default function Movies() {
         </UL>
       </nav>
       <div className="row">
-        {movies.map((movie, index) => (
+        {data.map((movie, index) => (
           <div key={index} className="col-md-4 text-center">
             <DivHover className="item my-3">
               <div className="position-relative overflow-hidden">

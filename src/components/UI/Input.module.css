@@ -1,17 +1,30 @@
-.input {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(3 , minmax(8rem , 1fr)) 3rem; 
+    margin: 2rem;
   }
-  
+
   .label_s{
     font-weight: bold;
     font-size: 16px;
+    grid-column: 1/2;
   }
-  
   .input_s {
     border-radius: 5px;
     border: 1px solid #ccc;
     font: inherit;
     padding-left: 0.5rem;
+    grid-column: 2/4; 
+  } 
+
+  .invalidGrid{
+    grid-column: 2/4; 
+    text-align: left;
   }
+
+  .input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;  
+  } 
+ 

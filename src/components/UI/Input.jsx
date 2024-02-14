@@ -1,24 +1,34 @@
-import React from "react";
-import style from './Input.module.css';
-const Input = React.forwardRef((props, ref) => {
+import classes from './Input.module.css';
+
+
+const Input = ({type ,  id, register, label, error }) => {
+
+  let errorContent = '';
+  let classInvalidation = ''
+  if (error) {
+    console.log(error)
+    errorContent = <div id={id} className={classes.invalidGrid + " invalid-feedback text-left"}>
+      {error}
+    </div>;
+    classInvalidation = 'is-invalid'
+  }
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="m-3">
-          <label className={"col-md-4 "+ style.label_s} htmlFor={props.id}>
-            {props.label}
+    <div className='container'> 
+        <div className={classes.grid}>
+          <label className={`${classInvalidation} ' ' ${classes.label_s}    `} htmlFor={id}>
+            {label}
           </label>
           <input
-            className={"col-md-6 " + style.input_s}
-            type={props.type}
-            id={props.id}
-            ref={ref}
-            required
+            className={classes.input_s}
+            id={id}
+            type={type}
+            {...register(id)}
           />
-        </div>
-      </div>
+          {errorContent}
+        </div> 
     </div>
   );
-});
+}
 
 export default Input;
